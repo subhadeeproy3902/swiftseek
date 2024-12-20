@@ -14,7 +14,7 @@ const Footer = () => {
             height={30}
           />
           <span className="text-base font-medium leading-[normal]">
-            SwiftSeek.io
+            SwiftSeek
           </span>
         </a>
         <div className="flex items-center gap-3">
@@ -27,7 +27,7 @@ const Footer = () => {
               height={15}
             />
           </Link>
-          <Link href={"https://github.com/Nutlope/SwiftSeek"} target="_blank">
+          <Link href={"https://github.com/subhadeeproy3902/swiftseek"} target="_blank">
             <Image
               unoptimized
               src={"/img/github-footer.svg"}
