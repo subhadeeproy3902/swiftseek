@@ -76,7 +76,7 @@ const Hero: FC<THeroProps> = ({
         Fully open source!{" "}
         <span className="text-sm font-medium underline">
           <a
-            href="https://github.com/Nutlope/SwiftSeek"
+            href="https://github.com/subhadeeproy3902/swiftseek"
             target="_blank"
             rel="noopener noreferrer"
           >
