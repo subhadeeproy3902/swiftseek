@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { Toaster, toast } from "react-hot-toast";
 import Markdown from "react-markdown";
-import { usePDF } from "react-to-pdf";
+import { Margin, usePDF } from "react-to-pdf";
 
 export default function Answer({ answer }: { answer: string }) {
-
   const { toPDF, targetRef } = usePDF({
     filename: "report.pdf",
+    page: {
+      margin: Margin.LARGE,
+      format: "letter",
+    },
   });
 
   return (
@@ -75,18 +78,18 @@ export default function Answer({ answer }: { answer: string }) {
           <div className="w-full whitespace-pre-wrap text-base font-light leading-[152.5%] text-black">
             {answer ? (
               <>
-              <div
-                ref={targetRef}
-                className="markdown whitespace-pre-wrap p-4 md:p-8"
-              >
-                <Markdown className="report">{answer.trim()}</Markdown>
-              </div>
-              <button
-                className="bg-[#FFD700] text-black font-bold uppercase text-xs py-2 px-4 rounded-lg"
-                onClick={() => toPDF()}
-              >
-                Download Report
-              </button>
+                <div
+                  ref={targetRef}
+                  className="markdown whitespace-pre text-wrap p-4 md:p-8"
+                >
+                  <Markdown className="report">{answer.trim()}</Markdown>
+                </div>
+                <button
+                  className="rounded-lg bg-[#FFD700] px-4 py-2 text-xs font-bold uppercase text-black"
+                  onClick={() => toPDF()}
+                >
+                  Download Report
+                </button>
               </>
             ) : (
               <div className="flex w-full flex-col gap-2">

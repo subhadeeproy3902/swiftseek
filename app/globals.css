@@ -86,6 +86,7 @@ h4,
 h5,
 h6 {
   font-weight: 800;
+  line-height: initial;
 }
 
 .markdown h2 {
@@ -132,6 +133,11 @@ h6 {
 .markdown ol {
   padding-left: 20px;
   margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.markdown ol li, .markdown menu li {
+  list-style-type: decimal;
   margin-bottom: 5px;
 }
 

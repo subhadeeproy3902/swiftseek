@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   );
 
   const mainAnswerPrompt = `
-  Given a user question and some context, please write a detailed, structured, and professional report on the topic based on the context provided. You will be given a set of related contexts to the question, each starting with a reference number like [[citation:x]], where x is a number. Use these contexts to create an in-depth, accurate, and well-organized report.
+  Given a user question and some context, please write a detailed, structured, and professional report on the topic based on the context provided. You will be given a set of related contexts to the question, each starting with a reference number like 'x.', where x is a number. Use these contexts to create an in-depth, accurate, and well-organized report.
 
   Your report should be in Markdown format and should dynamically include appropriate sections based on the topic and context. The sections must:
   - Be logical and relevant to the topic.
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
      - Key Findings
      - Future Scope
      - Conclusion
-  2. **References**: Use a separate section at the end to list references cited in the report, using the citation format [[citation:x]].
+  2. **References**: Use a separate section at the end to list references cited in the report, using the citation format 'x.'.
 
   Ensure the report is:
   - Expertly written with a professional tone.
@@ -82,9 +82,7 @@ export async function POST(request: Request) {
   Here are the set of contexts:
 
   <contexts>
-  ${finalResults.map(
-    (result, index) => `[[citation:${index}]] ${result.fullContent} \n\n`,
-  )}
+  ${finalResults.map((result, index) => `${index}. ${result.fullContent} \n\n`)}
   </contexts>
 
   Remember, the report must read like a professional document with appropriate Markdown formatting. Use sections and subsections thoughtfully to create a logical flow. Here is the user question:

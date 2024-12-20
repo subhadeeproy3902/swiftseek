@@ -20,22 +20,22 @@ const Hero: FC<THeroProps> = ({
   return (
     <div className="flex flex-col items-center justify-center">
       <a
-        className="mb-4 inline-flex h-7 shrink-0 items-center gap-[9px] rounded-[50px] border-[0.5px] border-solid border-[#E6E6E6] bg-white px-3 py-4 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.25)]"
+        className="mb-4 inline-flex h-7 shrink-0 items-center gap-[9px] rounded-[50px] border-[0.5px] border-solid border-[#ff9232] bg-orange-100/20 px-4 py-4 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.25)]"
         href="https://www.together.ai/"
         target="_blank"
       >
         <Image
           unoptimized
-          src="/img/together-ai.svg"
+          src="/logo.png"
           alt="hero"
-          width={18}
-          height={18}
+          width={20}
+          height={20}
         />
         <span className="text-center text-base font-light leading-[normal] text-[#1B1B16]">
           Powered by Together AI
         </span>
       </a>
-      <h2 className="bg-custom-gradient bg-clip-text pb-7 pt-2 text-center text-3xl font-semibold leading-[normal] lg:text-[64px]">
+      <h2 className="bg-gradient-to-r from-amber-500 via-orange-600 to-amber-500 bg-clip-text text-transparent pb-7 pt-2 opacity-100 saturate-200 text-center text-3xl font-semibold leading-[normal] lg:text-[64px] drop-shadow-2xl">
         Search smarter & faster
       </h2>
 
@@ -76,7 +76,7 @@ const Hero: FC<THeroProps> = ({
         Fully open source!{" "}
         <span className="text-sm font-medium underline">
           <a
-            href="https://github.com/Nutlope/turboseek"
+            href="https://github.com/Nutlope/SwiftSeek"
             target="_blank"
             rel="noopener noreferrer"
           >
