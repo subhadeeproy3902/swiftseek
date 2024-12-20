@@ -5,7 +5,7 @@ import "./globals.css";
 
 const inter = Lexend({ subsets: ["latin"] });
 
-let title = "Turbo Seek – AI Search Engine";
+let title = "SwiftSeek – AI Search Engine";
 let description =
   "Search smarter and faster with our open source AI search engine";
 let url = "https://SwiftSeek.io/";
