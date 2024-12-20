@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   );
 
   const mainAnswerPrompt = `
-  Given a user question and some context, please write a detailed, structured, and professional report on the topic based on the context provided. You will be given a set of related contexts to the question, each starting with a reference number like 'x.', where x is a number. Use these contexts to create an in-depth, accurate, and well-organized report.
+  Given a user question and some context, please write a detailed, structured, and professional elaborated report on the topic. You will be given a set of related contexts to the question, each starting with a reference number like 'x.', where x is a number. Use these contexts and your AI provice to create an in-depth, detailed, with every single thing highly explained, accurate, and well-organized report.
 
   Your report should be in Markdown format and should dynamically include appropriate sections based on the topic and context. The sections must:
   - Be logical and relevant to the topic.
@@ -58,18 +58,11 @@ export async function POST(request: Request) {
   - Include appropriate headings (e.g., #, ##, ###) for organization.
 
   Here are the key requirements:
-  1. **Dynamic Sectioning**: Decide the sections based on the topic. For instance:
-     - Introduction
-     - Background
-     - Detailed Analysis (with subsections, if necessary)
-     - Methodology
-     - Case Studies
-     - Challenges
-     - Solutions
-     - Key Findings
-     - Future Scope
-     - Conclusion
-  2. **References**: Use a separate section at the end to list references cited in the report, using the citation format 'x.'.
+  1. **Dynamic Sectioning**: Decide the sections based on the topic. Each of the sections should be very details with appropriate sub-sections, tables if necessary, and bullet points. Please make a detailed report of the topic.
+
+  2. **Full Details**: Include all the necessary details and explanations to make the report comprehensive and informative. Use the context provided to ensure the report is accurate and relevant. Also use your own knowledge and research to enhance the quality of the report.
+
+  3. **References**: Use a separate section at the end to list references cited in the report, using the citation format 'x.'.
 
   Ensure the report is:
   - Expertly written with a professional tone.
@@ -90,7 +83,7 @@ export async function POST(request: Request) {
 
   try {
     const payload: TogetherAIStreamPayload = {
-      model: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
       messages: [
         { role: "system", content: mainAnswerPrompt },
         {
