@@ -49,10 +49,10 @@ const Hero: FC<THeroProps> = ({
       </div>
 
       {/* Suggestions section */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 pb-[30px] lg:flex-nowrap lg:justify-normal">
+      <div className="flex flex-wrap items-center justify-center gap-4 pb-[30px] lg:flex-nowrap lg:justify-normal mt-5">
         {suggestions.map((item) => (
           <div
-            className="flex h-[35px] cursor-pointer items-center justify-center gap-[5px] rounded border border-solid border-[#C1C1C1] bg-[#EDEDEA] px-2.5 py-2"
+            className="flex h-[35px] cursor-pointer items-center justify-center gap-[5px] border border-solid border-orange-500 rounded-full bg-orange-200/20 px-4 py-2"
             onClick={() => handleClickSuggestion(item?.name)}
             key={item.id}
           >
