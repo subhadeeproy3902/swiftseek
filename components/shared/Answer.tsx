@@ -1,6 +1,6 @@
 import { useToast } from "@/hooks/use-toast";
 import Markdown from "react-markdown";
-import { Margin, usePDF } from "react-to-pdf";
+import { Margin, Resolution, usePDF } from "react-to-pdf";
 import { Copy, Info } from "lucide-react";
 import remarkGfm from 'remark-gfm';
 
@@ -9,8 +9,17 @@ export default function Answer({ answer }: { answer: string }) {
     filename: "report.pdf",
     page: {
       margin: Margin.MEDIUM,
-      format: "letter",
+      format: "A4",
     },
+    canvas: {
+      mimeType: 'image/png',
+      qualityRatio: 1
+   },
+   overrides: {
+      canvas: {
+         useCORS: true
+      }
+   },
   });
 
   const { toast } = useToast();
@@ -46,7 +55,7 @@ export default function Answer({ answer }: { answer: string }) {
               <>
                 <div
                   ref={targetRef}
-                  className="markdown text-wrap p-4 md:p-8"
+                  className="markdown text-wrap p-4 md:p-8 w-full"
                 >
                   <Markdown className="report" remarkPlugins={[remarkGfm]}>{answer.trim()}</Markdown>
                 </div>

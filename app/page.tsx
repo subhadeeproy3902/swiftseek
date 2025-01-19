@@ -154,7 +154,7 @@ export default function Home() {
       </div>
 
       <div className="flex h-screen w-full flex-col items-center justify-between max-w-5xl mx-auto">
-        <main className="z-50 h-full px-4 pb-4">
+        <main className="z-50 h-full px-4 pb-4 w-full">
           {!showResult && (
             <>
               <Header />
