@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "SwiftSeek",
   description: "SwiftSeek is a search engine for Swift documentation.",
   metadataBase: new URL("https://swiftseek.vercel.app"),
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({
