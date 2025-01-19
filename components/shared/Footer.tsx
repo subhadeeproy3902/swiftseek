@@ -1,4 +1,4 @@
-import { Github, Twitter, X } from "lucide-react";
+import { Github, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,10 +19,10 @@ const Footer = () => {
           </span>
         </a>
         <div className="flex items-center gap-3">
-          <Link href={"https://x.com/mvp_Subha"} target="_blank">
+          <Link href="https://x.com/mvp_Subha" target="_blank">
             <Twitter size={16} />
           </Link>
-          <Link href={"https://github.com/subhadeeproy3902"} target="_blank">
+          <Link href="https://github.com/subhadeeproy3902" target="_blank">
            <Github size={16} />
           </Link>
         </div>
