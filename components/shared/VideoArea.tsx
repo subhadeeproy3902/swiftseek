@@ -29,8 +29,9 @@ export function VideoArea({
           </>
         ) : videos.length > 0 ? (
           videos.map((video, index) => (
-            <Link
+            <a
               href={video.url}
+              target="_blank"
               key={index}
               className="flex items-start gap-6 p-6 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors border border-gray-100 dark:border-gray-800"
             >
@@ -50,7 +51,7 @@ export function VideoArea({
                   {video.url}
                 </p>
               </div>
-            </Link>
+            </a>
           ))
         ) : (
           <div className="text-center text-gray-400">No videos found</div>
