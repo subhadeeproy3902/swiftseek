@@ -210,6 +210,16 @@ h6 {
   border-collapse: collapse;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  white-space: nowrap; /* Prevents content from breaking within table cells */
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .markdown table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 .markdown th,
