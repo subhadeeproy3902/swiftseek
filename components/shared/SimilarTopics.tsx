@@ -34,7 +34,7 @@ const SimilarTopics = ({
                 <div className="flex items-center">
                   <ArrowUpRight size={24} />
                 </div>
-                <p className="text-sm font-light leading-[normal] text-[#1B1B16] [leading-trim:both] [text-edge:cap]">
+                <p className="text-sm font-light leading-[normal] text-[#1B1B16] text-left">
                   {item}
                 </p>
               </button>

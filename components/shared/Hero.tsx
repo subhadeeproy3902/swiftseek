@@ -24,15 +24,8 @@ const Hero: FC<THeroProps> = ({
         href="https://www.together.ai/"
         target="_blank"
       >
-        <Image
-          unoptimized
-          src="/logo.png"
-          alt="hero"
-          width={20}
-          height={20}
-        />
         <span className="text-center text-base font-light leading-[normal] text-[#1B1B16]">
-          Powered by Together AI
+          Together AI, Tavily and more
         </span>
       </a>
       <h2 className="bg-gradient-to-r from-amber-500 via-orange-600 to-amber-500 bg-clip-text text-transparent pb-7 pt-2 opacity-100 saturate-200 text-center text-3xl font-semibold leading-[normal] lg:text-[64px] drop-shadow-2xl">

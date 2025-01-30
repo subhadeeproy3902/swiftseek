@@ -39,15 +39,15 @@ export function ImageModal({ image, onClose }: ImageModalProps) {
 
   return (
     <Dialog open={!!image} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl h-[90vh] p-0 overflow-hidden">
+      <DialogContent className="max-w-3xl p-0 overflow-hidden">
         <div className="relative h-full flex flex-col">
-          <DialogHeader className="p-6 bg-background/80 backdrop-blur-sm z-10">
+          <DialogHeader className="p-6 text-left bg-background/80 backdrop-blur-sm z-10">
             <div className="flex items-center justify-between">
               <div>
-                <DialogTitle className="text-xl font-semibold">
+                <DialogTitle className="text-xl text-left font-semibold">
                   SwiftSeek Image
                 </DialogTitle>
-                <DialogDescription className="text-sm text-muted-foreground mt-1">
+                <DialogDescription className="text-left text-sm text-muted-foreground mt-1">
                   {image.description}
                 </DialogDescription>
               </div>
@@ -66,9 +66,9 @@ export function ImageModal({ image, onClose }: ImageModalProps) {
               <Image
                 src={image.url}
                 alt=""
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                className="object-contain"
+                width={1000}
+                height={1000}
+                className="object-contain max-h-96"
                 id="swiftseek-image"
               />
             </div>
