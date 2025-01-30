@@ -2,7 +2,7 @@ import { useToast } from "@/hooks/use-toast";
 import Markdown from "react-markdown";
 import { Margin, Resolution, usePDF } from "react-to-pdf";
 import { Copy, Info } from "lucide-react";
-import remarkGfm from 'remark-gfm';
+import remarkGfm from "remark-gfm";
 
 export default function Answer({ answer }: { answer: string }) {
   const { toPDF, targetRef } = usePDF({
@@ -12,14 +12,14 @@ export default function Answer({ answer }: { answer: string }) {
       format: "A4",
     },
     canvas: {
-      mimeType: 'image/png',
-      qualityRatio: 1
-   },
-   overrides: {
+      mimeType: "image/png",
+      qualityRatio: 1,
+    },
+    overrides: {
       canvas: {
-         useCORS: true
-      }
-   },
+        useCORS: true,
+      },
+    },
   });
 
   const { toast } = useToast();
@@ -55,9 +55,11 @@ export default function Answer({ answer }: { answer: string }) {
               <>
                 <div
                   ref={targetRef}
-                  className="markdown text-wrap p-4 md:p-8 w-full"
+                  className="markdown text-wrap p-4 md:p-8 w-[794px]"
                 >
-                  <Markdown className="report" remarkPlugins={[remarkGfm]}>{answer.trim()}</Markdown>
+                  <Markdown className="report" remarkPlugins={[remarkGfm]}>
+                    {answer.trim()}
+                  </Markdown>
                 </div>
                 <button
                   className="rounded-lg bg-[#FFD700] px-4 py-2 text-xs font-bold uppercase text-black"
