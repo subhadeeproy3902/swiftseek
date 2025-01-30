@@ -24,6 +24,7 @@
     "framer-motion": "^11.18.1",
     "html-to-image": "^1.11.11",
     "html2canvas": "^1.4.1",
+    "html2canvas-pro": "^1.5.8",
     "jsdom": "^26.0.0",
     "jspdf": "^2.5.2",
     "lucide-react": "^0.473.0",

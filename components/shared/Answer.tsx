@@ -1,26 +1,27 @@
 import { useToast } from "@/hooks/use-toast";
 import Markdown from "react-markdown";
-import { Margin, Resolution, usePDF } from "react-to-pdf";
 import { Copy, Info } from "lucide-react";
 import remarkGfm from "remark-gfm";
+import html2canvas from "html2canvas-pro";
+import { jsPDF } from "jspdf";
 
 export default function Answer({ answer }: { answer: string }) {
-  const { toPDF, targetRef } = usePDF({
-    filename: "report.pdf",
-    page: {
-      margin: Margin.MEDIUM,
-      format: "A4",
-    },
-    canvas: {
-      mimeType: "image/png",
-      qualityRatio: 1,
-    },
-    overrides: {
-      canvas: {
-        useCORS: true,
-      },
-    },
-  });
+  const downloadPDF = async () => {
+    const printArea = document.querySelector("#print-area") as HTMLElement;
+    if (printArea) {
+      const canvas = await html2canvas(printArea, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: [canvas.width, canvas.height],
+      });
+
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+      pdf.save("swiftseek-report.pdf");
+    }
+  };
 
   const { toast } = useToast();
 
@@ -54,8 +55,8 @@ export default function Answer({ answer }: { answer: string }) {
             {answer ? (
               <>
                 <div
-                  ref={targetRef}
-                  className="markdown text-wrap p-4 md:p-8 w-[794px]"
+                  id="print-area"
+                  className="markdown text-wrap p-4 md:p-8 w-full"
                 >
                   <Markdown className="report" remarkPlugins={[remarkGfm]}>
                     {answer.trim()}
@@ -63,7 +64,7 @@ export default function Answer({ answer }: { answer: string }) {
                 </div>
                 <button
                   className="rounded-lg bg-[#FFD700] px-4 py-2 text-xs font-bold uppercase text-black"
-                  onClick={() => toPDF()}
+                  onClick={downloadPDF}
                 >
                   Download Report
                 </button>
