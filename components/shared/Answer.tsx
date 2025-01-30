@@ -41,19 +41,19 @@ export default function Answer({ answer }: { answer: string }) {
         const wrappedText = pdf.splitTextToSize(headerText, maxWidth);
         pdf.text(wrappedText, marginX, y);
         y += wrappedText.length * 7; // Adjusting margin after h3 (28px in CSS)
-      } else if (line.startsWith("#### ")) { // h4
+      } else if (line.startsWith("#### ")) {
         pdf.setFontSize(14).setFont("Montserrat", "bold");
         const headerText = line.replace("#### ", "");
         const wrappedText = pdf.splitTextToSize(headerText, maxWidth);
         pdf.text(wrappedText, marginX, y);
         y += wrappedText.length * 6; // Adjusting margin after h4 (24px in CSS)
-      } else if (line.startsWith("##### ")) { // h5
+      } else if (line.startsWith("##### ")) {
         pdf.setFontSize(12).setFont("Montserrat", "bold");
         const headerText = line.replace("##### ", "");
         const wrappedText = pdf.splitTextToSize(headerText, maxWidth);
         pdf.text(wrappedText, marginX, y);
         y += wrappedText.length * 6; // Adjusting margin after h5 (20px in CSS)
-      } else if (line.startsWith("###### ")) { // h6
+      } else if (line.startsWith("###### ")) {
         pdf.setFontSize(10).setFont("Montserrat", "bold");
         const headerText = line.replace("###### ", "");
         const wrappedText = pdf.splitTextToSize(headerText, maxWidth);
@@ -78,22 +78,26 @@ export default function Answer({ answer }: { answer: string }) {
           y = pdf.lastAutoTable.finalY + 10;
           tableRendered = true;
         }
-      } else if (line.startsWith("- ") || line.startsWith("* ")) { // Unordered list (ul)
+      } else if (line.startsWith("- ") || line.startsWith("* ")) {
         pdf.setFontSize(12).setFont("Montserrat", "normal");
         pdf.setTextColor(0);
         const listItem = line.slice(2).trim(); // Remove the bullet (either - or *)
         const wrappedText = pdf.splitTextToSize(`• ${listItem}`, maxWidth);
         pdf.text(wrappedText, marginX, y);
         y += wrappedText.length * 6; // Adjusting margin for list items
-      } else if (line.match(/^\d+\./)) { // Ordered list (ol)
+      } else if (line.match(/^\d+\./)) {
         pdf.setFontSize(12).setFont("Montserrat", "normal");
         pdf.setTextColor(0);
-        const listItem = line.slice(line.indexOf('.') + 1).trim(); // Remove the number
-        const wrappedText = pdf.splitTextToSize(`${line[0]}. ${listItem}`, maxWidth);
+        const listItem = line.slice(line.indexOf(".") + 1).trim(); // Remove the number
+        const wrappedText = pdf.splitTextToSize(
+          `${line[0]}. ${listItem}`,
+          maxWidth
+        );
         pdf.text(wrappedText, marginX, y);
         y += wrappedText.length * 6; // Adjusting margin for list items
-      }
-      else if (line.startsWith("```")) {
+      } else if (line.startsWith("```")) {
+        // top padding
+        y += 6;
         // Check if it's the start or end of a code block
         if (inCodeBlock) {
           inCodeBlock = false; // End of code block
@@ -107,7 +111,7 @@ export default function Answer({ answer }: { answer: string }) {
         pdf.setTextColor(0);
         const wrappedText = pdf.splitTextToSize(formattedText, maxWidth);
         pdf.text(wrappedText, marginX, y);
-        y += wrappedText.length * 6;
+        y += wrappedText.length * 5;
       } else {
         pdf.setFontSize(12).setFont("Montserrat", "normal");
         pdf.setTextColor(0);
@@ -123,8 +127,7 @@ export default function Answer({ answer }: { answer: string }) {
     });
 
     pdf.save("swiftseek-report.pdf");
-};
-
+  };
 
   return (
     <div className="container flex h-auto w-full shrink-0 gap-4 rounded-lg border border-solid border-[#ffe5c1] bg-white p-5 lg:p-10">
