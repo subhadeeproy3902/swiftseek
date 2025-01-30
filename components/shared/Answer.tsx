@@ -23,6 +23,7 @@ export default function Answer({ answer }: { answer: string }) {
     let inCodeBlock = false; // Flag to track if we're inside a code block
 
     lines.forEach((line, index) => {
+      line = line.replace(/\*\*/g, "").replace(/__/g, "")
       if (line.startsWith("# ")) {
         pdf.setFontSize(24).setFont("Montserrat", "bold");
         const headerText = line.replace("# ", "");
@@ -95,6 +96,13 @@ export default function Answer({ answer }: { answer: string }) {
         );
         pdf.text(wrappedText, marginX, y);
         y += wrappedText.length * 6; // Adjusting margin for list items
+      } else if (line.includes("**")) {
+        pdf.setFontSize(12).setFont("Montserrat", "bold");
+        pdf.setTextColor(0);
+        const boldText = line.replace(/\*\*/g, "").replace(/__/g, "");
+        const wrappedText = pdf.splitTextToSize(boldText, maxWidth);
+        pdf.text(wrappedText, marginX, y);
+        y += wrappedText.length * 6;
       } else if (line.startsWith("```")) {
         // top padding
         y += 6;
