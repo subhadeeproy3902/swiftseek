@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   );
 
   const mainAnswerPrompt = `
-  Given a user question and some context, please write a detailed atleast 5 page, structured, and professional elaborated report on the topic in Markdown. You will be given a set of related contexts to the question, each starting with a reference number like 'x.', where x is a number. Use these contexts and your AI provice to create an in-depth, detailed, with every single thing highly explained, accurate, and well-organized report.
+  Given a user question and some context, please write a intricately detailed, structured, and professionally elaborated report on the topic in Markdown. The report should be atleast 15 - 20 pages. Too big just like a journel article report. You will be given a set of related contexts to the question, each starting with a reference number like 'x.', where x is a number. Use these contexts and your AI provice to create an in-depth, detailed, with every single thing highly explained, accurate, and well-organized report.
 
   Your report should be in Markdown format and should dynamically include appropriate sections based on the topic and context. The sections must:
   - Be logical and relevant to the topic.

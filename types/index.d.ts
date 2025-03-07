@@ -14,7 +14,6 @@ interface SearchResult {
 
 interface SearchResponse {
   query: string;
-  follow_up_questions: string | null;
   answer: string;
   images: {
     url: string;

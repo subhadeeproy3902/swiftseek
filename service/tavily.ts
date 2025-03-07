@@ -1,6 +1,14 @@
 "use server";
 
-export async function getSearchResults(searchQuery: string): Promise<SearchResponse> {
+import { tavily } from "@tavily/core";
+
+const API_KEY = process.env.TAVILY_API_KEY!;
+
+const client = tavily({ apiKey: API_KEY });
+
+export async function getSearchResults(
+  searchQuery: string
+): Promise<SearchResponse> {
   const apiUrl = "https://api.tavily.com/search";
 
   const requestPayload = {
@@ -15,20 +23,36 @@ export async function getSearchResults(searchQuery: string): Promise<SearchRespo
   };
 
   try {
-    const apiResponse = await fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestPayload),
+    const x = await client.search(searchQuery, {
+      searchDepth: "advanced",
+      maxResults: 6,
+      includeAnswer: true,
+      includeImages: true,
+      includeImageDescriptions: true,
     });
 
-    if (!apiResponse.ok) {
-      throw new Error(`Failed to fetch search results: ${apiResponse.statusText}`);
-    }
+    console.log(x);
 
-    const responseJson: SearchResponse = await apiResponse.json();
+    const responseJson: SearchResponse = {
+      query: searchQuery,
+      answer: x.answer || "",
+      images: x.images.map((image) => ({
+        url: image.url,
+        description: image.description || "",
+      })),
+      results: x.results.map((result) => ({
+        url: result.url,
+        title: result.title,
+        content: result.content,
+        score: result.score,
+        raw_content: null,
+      })),
+    };
     return responseJson;
   } catch (error) {
     console.error("Error fetching search results:", error);
-    throw new Error("An error occurred while fetching search results. Please try again later.");
+    throw new Error(
+      "An error occurred while fetching search results. Please try again later."
+    );
   }
 }
